@@ -1,0 +1,53 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2;
+    font-size: 5rem;
+}
+
+/* highlight text so it stands out against all kinds of background images */
+.word {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+}
+
+.pressed {
+    transform: scale(0.95);
+    background-color: rgb(255, 185, 127);
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.background-img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+@keyframes fall {
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    100% {
+        top: 100vh;
+        opacity: 0;
+    }
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #ff0;
+    animation: fall 4s linear;
+}
