@@ -56,7 +56,10 @@ function renderBackgroundImg() {
 
   img.src = `imgs/${words[round]}.jpg`;
   img.classList.add("background-img");
-  body.appendChild(img);
+
+  img.onload = () => {
+    body.appendChild(img);
+  };
 }
 
 function renderWord(word) {
