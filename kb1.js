@@ -71,7 +71,7 @@ function renderWord(word) {
     const letterSpan = document.createElement("span");
     letterSpan.classList.add("letter");
     letterSpan.dataset.key = letter;
-    letterSpan.textContent = letter;
+    letterSpan.textContent = letter.toUpperCase();
     wordContainer.appendChild(letterSpan);
   }
 }

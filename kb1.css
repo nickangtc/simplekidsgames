@@ -7,6 +7,8 @@ body {
     margin: 0;
     background-color: #f2f2f2;
     font-size: 5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    letter-spacing: 0.3rem;
 }
 
 /* highlight text so it stands out against all kinds of background images */
