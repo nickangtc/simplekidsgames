@@ -81,25 +81,47 @@ function hasCompletedWord() {
   return wordContainer.children.length === 0;
 }
 
-function generateConfetti() {
-  const colors = [
+function getNextColourSet() {
+  const reddish = [
     "#FFB6C1",
     "#FFA07A",
     "#FF7F50",
-    "#FF6347",
     "#FF4500",
     "#FFD700",
     "#FFA500",
     "#FF8C00",
   ];
 
-  for (let i = 0; i < 90; i++) {
+  const blueish = [
+    "#00FFFF",
+    "#00CED1",
+    "#00BFFF",
+    "#1E90FF",
+    "#4169E1",
+    "#0000FF",
+  ];
+
+  const greenish = [
+    "#00FF00",
+    "#32CD32",
+    "#98FB98",
+    "#90EE90",
+    "#00FA9A",
+    "#00FF7F",
+    "#3CB371",
+  ];
+
+  const colours = [reddish, blueish, greenish];
+  return colours[round % colours.length];
+}
+
+function generateConfetti() {
+  const colors = getNextColourSet();
+
+  for (let i = 0; i < 80; i++) {
     setTimeout(() => {
       const confetti = document.createElement("div");
       confetti.className = "confetti";
-      const size = `${Math.random() * 10 + 5}px`; // random size between 5px and 15px
-      confetti.style.width = size;
-      confetti.style.height = size;
       confetti.style.top = `${(i / 100) * 100}vh`;
       confetti.style.left = `${Math.random() * 100}vw`;
       confetti.style.backgroundColor =

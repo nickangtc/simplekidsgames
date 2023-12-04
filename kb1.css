@@ -11,6 +11,18 @@ body {
     letter-spacing: 0.3rem;
 }
 
+/* back button fixed to top left hand corner of page */
+.back-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 10;
+}
+
 /* highlight text so it stands out against all kinds of background images */
 .word {
     background-color: rgba(255, 255, 255, 0.5);
@@ -20,7 +32,7 @@ body {
 
 .pressed {
     transform: scale(0.95);
-    background-color: rgb(255, 185, 127);
+    background-color: yellow;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
 
@@ -52,4 +64,5 @@ body {
     height: 10px;
     background: #ff0;
     animation: fall 4s linear;
+    z-index: 20;
 }
