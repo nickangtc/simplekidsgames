@@ -31,17 +31,38 @@ function addKeyboardListeners() {
     );
 
     if (letter) {
-      letter.classList.add("pressed");
-      setTimeout(() => {
-        letter.classList.remove("pressed");
-        letter.remove();
-        if (hasCompletedWord()) {
-          generateConfetti();
-          nextRound();
-        }
-      }, 1000);
+      markLetterAsPressed(letter);
+      say(letter.dataset.key);
     }
   });
+}
+
+function markLetterAsPressed(letter) {
+  letter.classList.add("pressed", "highlight");
+  setTimeout(() => {
+    letter.classList.remove("highlight");
+  }, 1000);
+
+  if (hasCompletedWord()) {
+    shakeWord();
+    setTimeout(() => {
+      generateConfetti();
+      nextRound();
+    }, 1500);
+  }
+}
+
+function shakeWord() {
+  const word = document.querySelector(".word");
+  word.classList.add("shakeMe");
+  setTimeout(() => {
+    word.classList.remove("shakeMe");
+  }, 1000);
+}
+
+function say(text) {
+  const utterance = new SpeechSynthesisUtterance(text);
+  speechSynthesis.speak(utterance);
 }
 
 function renderBackgroundImg() {
@@ -77,8 +98,8 @@ function renderWord(word) {
 }
 
 function hasCompletedWord() {
-  const wordContainer = document.querySelector(".word");
-  return wordContainer.children.length === 0;
+  const letters = Array.from(document.querySelectorAll(".letter"));
+  return letters.every((letter) => letter.classList.contains("pressed"));
 }
 
 function getNextColourSet() {
